@@ -1,13 +1,220 @@
+/*шрифты*/
+@font-face {
+  font-family: 'trebuchet MS';
+  src: url(./fonts/TrebuchetMS.woff);
+}
+
+@font-face {
+  font-family: 'exo2.0-thin'; 
+  src: url(./fonts/Exo2.0-Thin.otf);
+}
+
+/*селекторы тегов */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'trebuchet MS';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/*feeds*/
+.feeds {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url(./images/bg-min.jpg);
+}
+
+.feeds__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.feeds__header {
+  margin: 0;
+  padding: 0 0 22px;
+  text-align: center;
+  text-shadow: 0 1px 0 #000000;
+  color: #ffffff;
+  font-family: 'exo2.0-thin'; 
+  font-size: 36px;
+  font-weight: 300;
+}
+
+/*feed*/
+.feed {
+  margin-bottom: 15px;
+}
+
+.feed__subtitle {
+  opacity: 0.9;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.feed__subtitle--yellow {
+  color: #ffff66;
+}
+
+.feed__link {
+  color: #1698d9;
+  text-decoration: none;
+  border-bottom: 1px dashed #1698d9;
+}
+
+/*card*/
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 312px;
+  height: 472px;
+  background-color: #1698d9;
+  -webkit-clip-path: polygon(13% 0, 100% 0, 100% 100%, 0 100%, 0 8%);
+  clip-path: polygon(13% 0, 100% 0, 100% 100%, 0 100%, 0 8%);
+  padding: 24px 15px 15px 50px;
+  box-sizing: border-box;
+  border-radius: 0 10px 10px;
+}
+
+.card::before {
+  z-index: -1;
+  content: '';
+  width: 304px;
+  height: 464px;
+  -webkit-clip-path: polygon(13% 0, 100% 0, 100% 100%, 0 100%, 0 8%);
+  clip-path: polygon(13% 0, 100% 0, 100% 100%, 0 100%, 0 8%);
+  background: url(./images/cat-min.png) no-repeat;
+  background-position: 0 100%;
+  background-color: #f2f2f2;
+  display: block;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  border-radius: 0 10px 10px;
+  transition: all .4s;
+}
+
+.card__preview {
+  position: relative;
+  top: -6px;
+  margin: 0;
+  color: #666666;
+  font-size: 16px;
+}
+
+.card__title {
+  margin: 0;
+  color: #000000;
+  font-family: "Trebuchet MS";
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.card__features {
+  color: #666666;
+  font-family: "Trebuchet MS";
+  font-size: 14px;
+}
+
+.card__title--small {
+  margin: 0;
+  font-size: 24px;
+}
+
+.card--pink,
+.card--pink .card__amount {
+  background-color: #d91667;
+}
+
+.card--disabled,
+.card--disabled .card__amount {
+  background-color: #b3b3b3;
+}
+
+.card--disabled::before {
+  background: url(./images/cat--disabled-min.png) no-repeat;
+  background-position: 0 100%;
+  background-color: #f2f2f2;
+}
+
+.card--disabled .card__title,
+.card--disabled .card__preview,
+.card--disabled .card__features {
+  opacity: 0.5;
+  color: #b3b3b3;
+}
+
+.card--mouseleaved::before {
+  transition: all .4s;
+  background-color: #FFBC0E;
+}
+
+.card--checked::before {
+  background: url(./images/happy-cat-min.png) no-repeat;
+  background-color: #ccc;
+  background-size: 100%;
+  background-position: 100% 170%;
+}
+
+.card__added-in-basket {
+  display: none;
+}
+
+.card--checked .card__added-in-basket {
+  position: relative;
+  left: 20px;
+  display: block;
+}
+
+.card__amount {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: flex-end;
+  width: 81px;
+  height: 81px;
+  background-color: #1698d9;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+}
+
+/*quantity*/
+.quantity__count {
+  margin: 0;
+  font-size: 42px;
+}
+
+.quantity__unit {
+  margin: 0;
+  font-size: 21px;
+  line-height: 12px;
+}
+
+@media (min-width: 940px) {
+  .feeds {
+    max-width: 100vw;
+    height: 100vh;
+  }
+
+  .feed {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 1199px) {
+  .feeds__wrapper {
+    width: 1120px;
+    justify-content: space-between;
+  }
 }
